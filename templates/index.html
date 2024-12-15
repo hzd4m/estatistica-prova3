@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore o Universo Zeidam: contribua para nossa jornada ou confira os resultados incríveis!">
+    <meta property="og:title" content="Universo Zeidam">
+    <meta property="og:description"
+        content="Junte-se à exploração do Universo Zeidam. Descubra, contribua e explore novas possibilidades!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seusite.com">
+    <meta property="og:image" content="https://seusite.com/static/images/og-image.jpg">
+    <title>Universo Zeidam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" aria-hidden="true">
+        <div class="splash-content">
+            <div class="rocket" role="img" aria-label="Foguete animado"></div>
+            <h2>Conectando ao Universo do Zeidam<span class="dots">...</span></h2>
+        </div>
+    </div>
+
+    <!-- Página Principal -->
+    <header>
+        <h1>Bem-vindo ao Universo Estatístico do Zeidam</h1>
+        <p>Explore os resultados ou contribua para nossa jornada!</p>
+    </header>
+
+    <main>
+        <div class="button-container">
+            <button class="action-button blue" aria-label="Veja os resultados do Universo">
+                <i class="icon telescope" aria-hidden="true"></i>
+                Resultados do Universo
+            </button>
+            <button class="action-button green" aria-label="Contribua com a exploração"
+                onclick="window.location.href='/form';">
+                <i class="icon person" aria-hidden="true"></i>
+                Contribua com a Exploração
+            </button>
+
+            <button class="action-button magenta" aria-label="Inicie sua jornada no Universo Zeidam">
+                <i class="icon rocket" aria-hidden="true"></i>
+                EM BREVE
+            </button>
+        </div>
+
+        <!-- Desenvolvedor Mestre -->
+        <section class="developer-section">
+            <h2>Nosso Desenvolvedor Mestre</h2>
+            <p>Conheça o talento por trás deste universo. Clique abaixo para conhecê-lo!</p>
+            <a href="https://hzd4m.github.io/" class="developer-button" target="_blank"
+                aria-label="Visite o site do desenvolvedor">
+                Conhecer essa lenda
+            </a>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}" async></script>
+</body>
+
+</html>

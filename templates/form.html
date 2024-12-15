@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contribua com o Universo Zeidam fornecendo suas informações estatísticas.">
+    <meta property="og:title" content="Formulário de Contribuição">
+    <meta property="og:description" content="Ajude-nos a explorar o Universo Zeidam contribuindo com seus dados.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seusite.com/form">
+    <meta property="og:image" content="https://seusite.com/static/images/og-image.jpg">
+    <title>Formulário de Contribuição - Universo Zeidam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Contribua com a Exploração</h1>
+        <p>Preencha o formulário abaixo para nos ajudar a desvendar o Universo Estatístico!</p>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/process" method="POST" class="contribution-form">
+            <label for="faixa-etaria">Faixa Etária:</label>
+            <select name="faixa_etaria" id="faixa-etaria" required>
+                <option value="<18">Menos de 18 anos</option>
+                <option value=">=18 e <22">18 a 21 anos</option>
+                <option value=">=22 e <26">22 a 25 anos</option>
+                <option value=">=26 e <30">26 a 29 anos</option>
+                <option value=">=30">30 anos ou mais</option>
+            </select>
+
+            <label for="km-percorridos">Km Percorridos Diariamente:</label>
+            <input type="number" id="km-percorridos" name="km_percorridos" min="0" placeholder="Exemplo: 10" required>
+
+            <label for="gasto-diario">Gasto Diário (em R$):</label>
+            <input type="number" id="gasto-diario" name="gasto_diario" min="0" step="0.01" placeholder="Exemplo: 15.50"
+                required>
+
+            <label for="tempo">Tempo de Deslocamento (em minutos):</label>
+            <input type="number" id="tempo" name="tempo" min="0" placeholder="Exemplo: 30" required>
+
+            <label>Acesso à Internet:</label>
+            <div class="radio-group">
+                <input type="radio" id="acesso-sim" name="acesso_internet" value="Sim" required>
+                <label for="acesso-sim">Sim</label>
+                <input type="radio" id="acesso-nao" name="acesso_internet" value="Não" required>
+                <label for="acesso-nao">Não</label>
+            </div>
+
+            <label for="local-acesso">Local de Acesso à Internet:</label>
+            <select name="local_acesso" id="local-acesso" required>
+                <option value="Em casa">Em casa</option>
+                <option value="Na universidade">Na universidade</option>
+            </select>
+
+            <button type="submit" class="submit-button">Enviar Contribuição</button>
+        </form>
+
+        <a href="/" class="back-button">Voltar ao Início</a>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}" async></script>
+</body>
+
+</html>

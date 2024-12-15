@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>Resultados da Pesquisa</h1>
+
+    <!-- Estatísticas Descritivas -->
+    <section>
+        <h2>Estatísticas Descritivas</h2>
+        {{ stats | safe }}
+    </section>
+
+    <!-- Regressão Linear Simples -->
+    <section>
+        <h2>Regressão Linear Simples</h2>
+        <img src="data:image/png;base64,{{ plot_simple_url }}" alt="Gráfico de Regressão Linear Simples">
+    </section>
+
+    <!-- Regressão Linear Multivariada -->
+    <section>
+        <h2>Regressão Linear Multivariada</h2>
+        <img src="data:image/png;base64,{{ plot_multi_url }}" alt="Gráfico de Regressão Linear Multivariada">
+    </section>
+
+    <!-- Regressão Logística -->
+    <section>
+        <h2>Regressão Logística</h2>
+        {% if plot_log_url %}
+        <img src="data:image/png;base64,{{ plot_log_url }}" alt="Gráfico de Regressão Logística">
+        {% else %}
+        <p>Não há dados suficientes para realizar a regressão logística.</p>
+        {% endif %}
+    </section>
+
+    <a href="/" class="back-button">Voltar</a>
+</body>
+
+</html>
